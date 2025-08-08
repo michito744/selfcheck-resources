@@ -35,4 +35,4 @@ A原データ公開／B解析手順／C代替仮説処理／D外部監査・年�
 Self-Check Summary（例）：✓ Context OK | Num OK | Leader/Exec OK | FC OK | Tone OK | Format OK
 
 Docs: https://github.com/michito744/selfcheck-resources  
-Examples: https://raw.githubusercontent.com/michito744/selfcheck-resources/main/selfcheck_examples.md
+Examples: https://raw.githubusercontent.com/michito744/selfcheck-resources/main/docs/examples/selfcheck_examples.md
