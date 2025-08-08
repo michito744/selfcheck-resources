@@ -1,2 +1,0 @@
-# selfcheck-resources
-Customize ChatGPT
