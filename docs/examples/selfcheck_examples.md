@@ -10,10 +10,12 @@ Self-Check: **FC OK**
 Wikipedia「◯◯事件」→ 一次判決 PDF＋二次専門誌で補強 → 確度=高
 
 ## 3. 日付・人名検証 NG 例
-誤:「2025 年時点の米大統領はバイデン」→ Step4 で不一致検出→要修正
+誤:「2025 年時点の米大統領はバイデン」  
+→ Step4 で官報照合し不一致検出 → 要修正
 
 ## 4. 上場企業役員検証 OK 例
-「2024-06 CFO に小林耕士氏」→ EDINET 臨報で確認 → Leader/Exec OK
+「2024-06 CFO に小林耕士氏」  
+→ EDINET 臨報で確認 → Leader/Exec OK
 
 ## 5. Self-Check Summary テンプレ
 Self-Check Summary:  
