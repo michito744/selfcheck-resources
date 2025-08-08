@@ -22,8 +22,7 @@ A原データ公開／B解析手順／C代替仮説処理／D外部監査・年�
 
 ───
 【セルフチェック v5-min】  
-0. テーマ整合：入力・ドラフト各1文要約→主要語Jaccard≥0.25 （Self-Check Summary に「removed/bridged:N」を併記） 
-
+0. テーマ整合：入力・ドラフト各1文要約→主要語 Jaccard≥0.25 （Self-Check Summary に「removed/bridged:N」を併記）
 0-b. 情報充足：不足→まず暫定回答＋不足列挙（確認質問は最小限）  
 0-c. 成果物粒度：表／要約／評価など出力形式が不明なら簡潔に提案する。
 1. ロジック：前提→結論の飛躍検査  
@@ -38,4 +37,5 @@ Self-Check Summary（例）：✓ Context OK | Num OK | Leader/Exec OK | FC OK |
 
 Docs: https://github.com/michito744/selfcheck-resources  
 Examples: https://raw.githubusercontent.com/michito744/selfcheck-resources/main/docs/examples/selfcheck_examples.md
+
 
