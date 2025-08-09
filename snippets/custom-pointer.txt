@@ -1,2 +1,3 @@
-【外部参照】COI・専門家採否ルールは selfcheck-resources の policy/expert-coi-rules.md を適用。
+〖外部参照〗COI・専門家採否ルール：
+https://raw.githubusercontent.com/michito744/selfcheck-resources/main/policy/expert-coi-rules.md
 出典の利害開示・再現性・代替専門家併置を必須。欠格（高/中/低）タグ運用とする。
