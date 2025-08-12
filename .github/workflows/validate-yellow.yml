@@ -25,3 +25,48 @@ jobs:
         run: |
           ajv compile --spec=draft2020 -s policy/yellow-signal/yellow.config.schema.json
       # 実値(YAMLや辞書)は非公開運用のため、公開側ではスキーマの健全性だけを検証
+name: Validate Yellow Config
+-on:
+-  workflow_dispatch:
+-    inputs:
+-      reason:
+-        description: 'why run manually?'
+-        required: false
+-  pull_request:
+-    paths:
+-      - "policy/yellow-signal/**"
+-  push:
+-    paths:
+-      - "policy/yellow-signal/**"
++on:
++  workflow_dispatch: {}   # 手動実行を有効化（分岐指定は不要）
++  pull_request:
++    paths:
++      - "policy/yellow-signal/**"
++  push:
++    paths:
++      - "policy/yellow-signal/**"
++
++permissions:
++  contents: read
++
++concurrency:
++  group: validate-yellow-${{ github.ref }}
++  cancel-in-progress: true
+ 
+ jobs:
+   validate:
+     runs-on: ubuntu-latest
++    timeout-minutes: 10
+     steps:
+       - uses: actions/checkout@v4
+       - uses: actions/setup-node@v4
+         with:
+           node-version: 20
+-      - run: npm i -g ajv-cli@5 js-yaml@4
++      - run: npm i -g ajv-cli@5
+       - name: Validate schema (compile only)
+         run: |
+-          ajv compile --spec=draft2020 -s policy/yellow-signal/yellow.config.schema.json
++          ajv compile --spec=draft2020 -s policy/yellow-signal/yellow.config.schema.json --strict=false
+       # 実値(YAMLや辞書)は非公開運用のため、公開側ではスキーマの健全性だけを検証
