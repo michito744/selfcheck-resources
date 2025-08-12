@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Yellow Signal Config Schema v1",
+  "type": "object",
+  "required": ["version", "thresholds", "lexicon_refs"],
+  "properties": {
+    "version": { "type": "integer", "minimum": 1 },
+    "thresholds": {
+      "type": "object",
+      "required": [
+        "cooccurrence_pct_moral",
+        "growth_rate_24h",
+        "assertive_in_top10_min",
+        "action_doubling_48h_min",
+        "cluster_min_volume_24h",
+        "per_account",
+        "escalate_on_protected_attribute"
+      ],
+      "properties": {
+        "cooccurrence_pct_moral": { "type": "number", "minimum": 0, "maximum": 1 },
+        "growth_rate_24h": { "type": "number", "minimum": 0 },
+        "assertive_in_top10_min": { "type": "integer", "minimum": 0, "maximum": 10 },
+        "action_doubling_48h_min": { "type": "integer", "minimum": 1 },
+        "cluster_min_volume_24h": { "type": "integer", "minimum": 0 },
+        "per_account": {
+          "type": "object",
+          "required": ["posts_24h_ge", "posts_7d_ge"],
+          "properties": {
+            "posts_24h_ge": { "type": "integer", "minimum": 1 },
+            "posts_7d_ge": { "type": "integer", "minimum": 1 }
+          }
+        },
+        "escalate_on_protected_attribute": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "lexicon_refs": {
+      "type": "object",
+      "required": ["moral", "assertive", "action"],
+      "properties": {
+        "moral": { "type": "string" },
+        "assertive": { "type": "string" },
+        "action": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "ui": {
+      "type": "object",
+      "properties": {
+        "friction_delay_seconds": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "audit": {
+      "type": "object",
+      "properties": {
+        "log_level": { "type": "string", "enum": ["none", "summary"] }
+      }
+    }
+  },
+  "additionalProperties": false
+}
