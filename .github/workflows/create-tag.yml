@@ -18,7 +18,17 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.inputs.target }}
-      - name: Create annotated tag and push
+          fetch-depth: 0            # 既存タグ参照や push 安定化のため
+          persist-credentials: true
+      - name: Configure git identity   # ← これが肝
         run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+      - name: Create tag (idempotent)
+        run: |
+          if git rev-parse -q --verify "refs/tags/${{ github.event.inputs.tag }}" >/dev/null; then
+            echo "Tag already exists; nothing to do."
+            exit 0
+          fi
           git tag -a "${{ github.event.inputs.tag }}" -m "Create tag via workflow"
           git push origin "${{ github.event.inputs.tag }}"
