@@ -1,5 +1,10 @@
 name: Validate Yellow Config
 on:
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'why run manually?'
+        required: false
   pull_request:
     paths:
       - "policy/yellow-signal/**"
