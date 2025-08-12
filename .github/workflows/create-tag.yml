@@ -1,0 +1,24 @@
+name: Create Tag (manual)
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag name (e.g., yellow-signal-v1)'
+        required: true
+      target:
+        description: 'Target ref (branch or full SHA)'
+        required: false
+        default: 'main'
+permissions:
+  contents: write
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.target }}
+      - name: Create annotated tag and push
+        run: |
+          git tag -a "${{ github.event.inputs.tag }}" -m "Create tag via workflow"
+          git push origin "${{ github.event.inputs.tag }}"
