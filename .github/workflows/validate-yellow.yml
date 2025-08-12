@@ -23,5 +23,5 @@ jobs:
       - run: npm i -g ajv-cli@5 js-yaml@4
       - name: Validate schema (compile only)
         run: |
-          ajv compile -s policy/yellow-signal/yellow.config.schema.json
+          ajv compile --spec=draft2020 -s policy/yellow-signal/yellow.config.schema.json
       # 実値(YAMLや辞書)は非公開運用のため、公開側ではスキーマの健全性だけを検証
