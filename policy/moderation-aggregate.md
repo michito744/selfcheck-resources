@@ -1,6 +1,6 @@
-+# moderation-aggregate — 黄信号 × FC強制v7（合流ルール）
-+
-+[![Validate Yellow Config](https://github.com/michito744/selfcheck-resources/actions/workflows/validate-yellow.yml/badge.svg?branch=main)](https://github.com/michito744/selfcheck-resources/actions/workflows/validate-yellow.yml)
+# moderation-aggregate — 黄信号 × FC強制v7（合流ルール）
+
+[![Validate Yellow Config](https://github.com/michito744/selfcheck-resources/actions/workflows/validate-yellow.yml/badge.svg?branch=main)](https://github.com/michito744/selfcheck-resources/actions/workflows/validate-yellow.yml)
 
 **目的**  
 違法・規約違反「前」の段階で**予兆（黄信号）**を検知しつつ、**通常ファクトチェック（FC強制v7）**で断定主張の真偽を補正し、**白/黄/赤**を一貫した基準で判定する。
@@ -8,32 +8,30 @@
 ---
 
 ## 1. 参照ドキュメント
-- 黄信号（予兆検知）  
-  - [TRIGGERS_v1.md](./yellow-signal/TRIGGERS_v1.md)（A–Fトリガの定義）  
-  - [WORKFLOW_v1.md](./yellow-signal/WORKFLOW_v1.md)（黄判定後の処理フロー）  
+- 黄信号（予兆検知）
+  - [TRIGGERS_v1.md](./yellow-signal/TRIGGERS_v1.md)（A–Fトリガの定義）
+  - [WORKFLOW_v1.md](./yellow-signal/WORKFLOW_v1.md)（黄判定後の処理フロー）
   - [yellow.config.schema.json](./yellow-signal/yellow.config.schema.json)（非公開YAMLのスキーマ）
-- 通常ファクトチェック（FC強制v7）  
-  - A 原データ / B 手続 / C 代替仮説 / D 基準（外部監査・年報・技術基準）  
+- 通常ファクトチェック（FC強制v7）
+  - A 原データ / B 手続 / C 代替仮説 / D 基準（外部監査・年報・技術基準）
   - 出典優先：一次＞高品質二次＞三次（※主要結論は一次で裏付け）
 
 ---
 
 ## 2. 入力 / 出力
-
-**入力（最低）**  
+**入力（最低）**
 - `text`: 投稿本文（必須）
 - `ctx`: 付随情報（任意）  
-  `reply_to_is_official`（D用）／`has_media_named_entity`（D補助）／`cluster_metrics`（A・B・E用） 等
+  例：`reply_to_is_official`（D用）／`has_media_named_entity`（D補助）／`cluster_metrics`（A・B・E用）
 
-**出力**  
-- `label`: `WHITE | YELLOW | RED`  
-- `reasons`: 発火したトリガ/FC根拠の短列挙（監査用）  
+**出力**
+- `label`: `WHITE | YELLOW | RED`
+- `reasons`: 発火したトリガ/FC根拠の短列挙（監査用）
 - `actions`: 推奨処理（摩擦UI/文脈カード/人手審査/ブロック など）
 
 ---
 
 ## 3. 用語と射程
-
 **黄信号 A–F（要約）**  
 A：文脈シグナル（対象語×モラル/感情語の共起増）  
 B：断定隣接（上位拡散群に断定語が多発）  
@@ -76,29 +74,22 @@ F：保護属性接触（人種/国籍/宗教/性別/障害/年齢/深刻な疾�
 f = extract_features(text, ctx)   // target_kind, named_person, accuses_crime, call_to_action, protected_attr, ...
 y = score_yellow(f, cluster_metrics?) // A–F（不明は0）
 
-if f.protected_attr && f.calls_for_exclusion: return RED
+if f.protected_attr && f.calls_for_exclusion:
+  return RED
 
 if f.named_person && f.accuses_crime:
   fc = run_factcheck(text)
   return (fc in {False, Unverified}) ? RED : YELLOW
 
-if f.call_to_action or f.targets_official: return YELLOW
-if not f.has_assertion: return WHITE
+if f.call_to_action or f.targets_official:
+  return YELLOW
+
+if not f.has_assertion:
+  return WHITE
 
 fc = run_factcheck(text)
-if fc == False: return YELLOW_STRONG
-if fc == Unverified: return YELLOW
+if fc == False:
+  return YELLOW_STRONG
+if fc == Unverified:
+  return YELLOW
 return WHITE_WITH_CONTEXT
-
----
-
-+## ステータス
-+
-+**Status**：v1（運用開始）  
-+**Compatible config**：`yellow-config-v1`  
-+**Maintainers**：`@<PUBLIC_DOCS_REVIEWER>`（文書）／ `@<SECOPS_OR_POLICY>`（設定）
-+
-### 参照索引
-人間向け（相対リンク）：[`policy/rules-index.json`](./rules-index.json)  
-機械/ChatUI向け（RAW推奨）：  
-`https://raw.githubusercontent.com/michito744/selfcheck-resources/refs/heads/main/policy/rules-index.json`
