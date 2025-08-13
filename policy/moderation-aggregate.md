@@ -1,6 +1,6 @@
 +# moderation-aggregate — 黄信号 × FC強制v7（合流ルール）
 +
-+![Validate Yellow Config](https://github.com/michito744/selfcheck-resources/actions/workflows/validate-yellow.yml/badge.svg)
++[![Validate Yellow Config](https://github.com/michito744/selfcheck-resources/actions/workflows/validate-yellow.yml/badge.svg?branch=main)](https://github.com/michito744/selfcheck-resources/actions/workflows/validate-yellow.yml)
 
 **目的**  
 違法・規約違反「前」の段階で**予兆（黄信号）**を検知しつつ、**通常ファクトチェック（FC強制v7）**で断定主張の真偽を補正し、**白/黄/赤**を一貫した基準で判定する。
