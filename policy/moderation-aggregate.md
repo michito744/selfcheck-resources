@@ -92,6 +92,12 @@ return WHITE_WITH_CONTEXT
 
 ---
 
++## ステータス
++
++**Status**：v1（運用開始）  
++**Compatible config**：`yellow-config-v1`  
++**Maintainers**：`@<PUBLIC_DOCS_REVIEWER>`（文書）／ `@<SECOPS_OR_POLICY>`（設定）
++
 ### 参照索引
 人間向け（相対リンク）：[`policy/rules-index.json`](./rules-index.json)  
 機械/ChatUI向け（RAW推奨）：  
