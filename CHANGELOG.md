@@ -4,4 +4,6 @@
 - 自動誤認防止のため「4′ 日付・人名・役員」を追加
 - yellow-signal v1 追加
 - 2025-08-12: [yellow-signal v1](policy/yellow-signal/) — Add public spec (TRIGGERS/WORKFLOW/Schema)
+- 2025-08-13: Add moderation-aggregate.v1 and rules-index.v1.json (RAW index); private CI pinned to tag
+
 
