@@ -83,8 +83,3 @@
 **Status**：v1（運用開始）
 
 ---
-
-### 参照索引
-人間向け（相対リンク）：[`policy/rules-index.json`](../rules-index.json)  
-機械/ChatUI向け（RAW推奨）：  
-`https://raw.githubusercontent.com/michito744/selfcheck-resources/refs/heads/main/policy/rules-index.json`
