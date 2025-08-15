@@ -1,0 +1,103 @@
+{
+  "version": "1.0",
+  "updated": "2025-08-15",
+  "thresholds": {
+    "advocacy_max": 0.55,
+    "analysis_range": [
+      0.55,
+      0.75
+    ],
+    "news_min": 0.75
+  },
+  "red_flag": {
+    "primary_sources": 0,
+    "rebuttal_present": false,
+    "label_density_per_1000_gt": 1.0
+  },
+  "gate_0g": {
+    "primary_sources_min": 2,
+    "require_rebuttal": true,
+    "require_fact_opinion_separation": true,
+    "label_density_per_1000_max": 1.0
+  },
+  "cross_0e": {
+    "description": "複数の独立した権限軸（軸A×軸B）の一次を双方そろえる。未達は本文主要結論から除外。",
+    "axisA_required": true,
+    "axisB_required": true
+  },
+  "ascii_naming": true,
+  "items": [
+    {
+      "id": 1,
+      "name": "一次原典リンクの有無/数",
+      "weight": 0.2,
+      "score_guide": "0=無, 1=1本, 2=2本以上"
+    },
+    {
+      "id": 2,
+      "name": "反論機会・異論の併記",
+      "weight": 0.12,
+      "score_guide": "0=無, 1=片側, 2=双方"
+    },
+    {
+      "id": 3,
+      "name": "制度・数字の併置",
+      "weight": 0.1,
+      "score_guide": "0=無, 1=一部, 2=主要命題で併置"
+    },
+    {
+      "id": 4,
+      "name": "出典の質（一次/二次/三次）",
+      "weight": 0.08,
+      "score_guide": "0=三次中心, 1=二次中心, 2=一次主"
+    },
+    {
+      "id": 5,
+      "name": "COI・立場開示",
+      "weight": 0.06,
+      "score_guide": "0=無, 1=略記, 2=明示"
+    },
+    {
+      "id": 6,
+      "name": "レッテル語密度（1000字）",
+      "weight": 0.1,
+      "score_guide": "2=低, 1=中, 0=高"
+    },
+    {
+      "id": 7,
+      "name": "見出しと本文の整合",
+      "weight": 0.06,
+      "score_guide": "0=乖離, 1=一部, 2=整合"
+    },
+    {
+      "id": 8,
+      "name": "引用の公平性",
+      "weight": 0.06,
+      "score_guide": "0=恣意, 1=不明, 2=妥当"
+    },
+    {
+      "id": 9,
+      "name": "時系列の整合",
+      "weight": 0.06,
+      "score_guide": "0=混乱, 1=一部, 2=明確"
+    },
+    {
+      "id": 10,
+      "name": "訂正・追記・資料公開姿勢",
+      "weight": 0.05,
+      "score_guide": "0=無, 1=一部, 2=明確"
+    },
+    {
+      "id": 11,
+      "name": "体裁ラベル（News/Opinion等）",
+      "weight": 0.06,
+      "score_guide": "0=無, 1=曖昧, 2=明示"
+    },
+    {
+      "id": 12,
+      "name": "アクセス妨害主張の裏付け",
+      "weight": 0.05,
+      "score_guide": "0=無, 1=片側, 2=双方裏付け"
+    }
+  ]
+}
