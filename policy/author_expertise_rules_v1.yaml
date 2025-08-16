@@ -1,0 +1,29 @@
+schema_version: 1
+window:
+  k_window: 5
+  window_days: 90
+  k_min: 3
+thresholds:
+  m3_pass_rate: 0.6
+  news_ratio: 0.5
+labels:
+  qualified: 専門性のある記者
+  provisional_nonqualified: 専門性判定不可（暫定非該当）
+  insufficient: データ不足
+fields:
+  - author
+  - date_jst
+  - url
+  - source_class
+  - primary_count
+  - rebuttal_present
+  - separation_present
+  - m3_pass
+policy:
+  strict_media_gating:
+    advocacy:
+      evidence_use: exclude
+    default: require_primary: 2
+notes:
+  - 肩書・受賞・裁判勝訴等は formal 属性。判定は practice 指標とANDで実施。
+  - practice 指標は window 内の記事で集計。
