@@ -5,7 +5,7 @@
     "triggers":  "https://raw.githubusercontent.com/michito744/selfcheck-resources/yellow-signal-v1.0.1/policy/yellow-signal/TRIGGERS_v1.md",
     "workflow":  "https://raw.githubusercontent.com/michito744/selfcheck-resources/yellow-signal-v1.0.1/policy/yellow-signal/WORKFLOW_v1.md",
     "schema":    "https://raw.githubusercontent.com/michito744/selfcheck-resources/yellow-signal-v1.0.1/policy/yellow-signal/yellow.config.schema.json",
-    "aggregate": "https://raw.githubusercontent.com/michito744/selfcheck-resources/yellow-signal-v1.0.1/policy/moderation-aggregate.v1.md"
+    "aggregate": "https://raw.githubusercontent.com/michito744/selfcheck-resources/yellow-signal-v1.0.1/policy/moderation-aggregate.v1.md",
     "author_expertise_rules_v1": "https://raw.githubusercontent.com/michito744/selfcheck-resources/yellow-signal-v1.0.1/policy/author_expertise_rules_v1.yaml"
   }
 }
